@@ -12,6 +12,8 @@ SiteAsset::register($this);
 /* @var $this yii\web\View */
 $this->title = 'My Yii Application';
 ?>
+<div class="view">
+
 <div class="site-index">
 
 	<div class="jumbotron">
@@ -84,5 +86,7 @@ $tmp = Users::find()->all();
 //)->all();
 Yii::$app->utils->print_r($tmp);
 ?>
+
+</div>
 
 </div>
