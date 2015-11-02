@@ -73,14 +73,6 @@ class Users extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getBlogs0()
-    {
-        return $this->hasMany(Blog::className(), ['id_user' => 'id']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
     public function getCategories()
     {
         return $this->hasMany(Categories::className(), ['id_user' => 'id']);
@@ -109,4 +101,29 @@ class Users extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Statuses::className(), ['id_user' => 'id']);
     }
+
+	/*-------------------------------------------------------------------------*/
+
+	/**
+	 * Finds user by username
+	 *
+	 * @param  string      $username
+	 * @return static|null
+	 */
+//	public function findByUsername($username)
+//	{
+//		$usr = Users::find()->where('name="'.$username.'"')->one();
+//
+//		if ($usr) {
+//			return $usr;
+//		}
+//
+//		return null;
+//	}
+////
+//	public function validatePassword($password)
+//	{
+//		return $this->pass === $password;
+//	}
+
 }

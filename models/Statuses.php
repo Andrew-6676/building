@@ -27,10 +27,10 @@ class Statuses extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\Connection the database connection used by this AR class.
      */
-    public static function getDb()
-    {
-        return Yii::$app->get('db_build');
-    }
+//    public static function getDb()
+//    {
+//        return Yii::$app->get('db_build');
+//    }
 
     /**
      * @inheritdoc
@@ -60,7 +60,7 @@ class Statuses extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getIdUser()
+    public function getUser()
     {
         return $this->hasOne(Users::className(), ['id' => 'id_user']);
     }

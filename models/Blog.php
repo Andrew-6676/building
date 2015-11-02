@@ -30,10 +30,10 @@ class Blog extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\Connection the database connection used by this AR class.
      */
-    public static function getDb()
-    {
-        return Yii::$app->get('db_build');
-    }
+//    public static function getDb()
+//    {
+//        return Yii::$app->get('db_build');
+//    }
 
     /**
      * @inheritdoc
@@ -66,7 +66,7 @@ class Blog extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getIdUser()
+    public function getUser()
     {
         return $this->hasOne(Users::className(), ['id' => 'id_user']);
     }
@@ -74,8 +74,9 @@ class Blog extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getIdUser0()
+    public function getCategory()
     {
-        return $this->hasOne(Users::className(), ['id' => 'id_user']);
+        return $this->hasOne(Categories::className(), ['id' => 'id_category']);
     }
+
 }

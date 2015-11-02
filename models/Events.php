@@ -29,10 +29,10 @@ class Events extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\Connection the database connection used by this AR class.
      */
-    public static function getDb()
-    {
-        return Yii::$app->get('db_build');
-    }
+//    public static function getDb()
+//    {
+//        return Yii::$app->get('db_build');
+//    }
 
     /**
      * @inheritdoc
@@ -51,20 +51,36 @@ class Events extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
+            'id'         => 'ID',
             'id_product' => 'Id Product',
-            'e_date' => 'E Date',
-            'id_status' => 'Id Status',
-            'descr' => 'Descr',
-            'id_user' => 'Id User',
+            'e_date'     => 'E Date',
+            'id_status'  => 'Id Status',
+            'descr'      => 'Descr',
+            'id_user'    => 'Id User',
         ];
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getIdUser()
+    public function getUser()
     {
         return $this->hasOne(Users::className(), ['id' => 'id_user']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getStatus()
+    {
+        return $this->hasOne(Statuses::className(), ['id' => 'id_status']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getProduct()
+    {
+        return $this->hasOne(Purchases::className(), ['id' => 'id_product']);
     }
 }
