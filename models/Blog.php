@@ -38,7 +38,8 @@ class Blog extends \yii\db\ActiveRecord
 			[['b_text'], 'string'],
 			[['id_category', 'id_user'], 'integer'],
 			[['published'], 'boolean'],
-			[['title', 'tags'], 'string', 'max' => 255]
+			[['title', 'tags'], 'string', 'max' => 255],
+			['id_user', 'default', 'value' => Yii::$app->user->identity->id],
 		];
 	}
 

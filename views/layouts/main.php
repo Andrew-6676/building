@@ -8,6 +8,7 @@ use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
+use app\models\Categories;
 
 AppAsset::register($this);
 ?>
@@ -37,11 +38,9 @@ AppAsset::register($this);
 		'options' => ['class' => 'navbar-nav navbar-right'],
 		'items' => [
 			['label' => 'Главная', 'url' => ['/site/index']],
-			['label' => 'Блог', 'url' => ['/blog/index']],
-			['label' => 'Настройки', 'url' => ['/site/setup']],
-			//['label' => 'About', 'url' => ['/site/about']],
-			//['label' => 'About', 'url' => ['/site/about']],
-			//['label' => 'Contact', 'url' => ['/site/contact']],
+			['label' => 'Блог', 'url' => ['/blog/index'],  'visible'=> !Yii::$app->user->isGuest],
+			['label' => 'Настройки', 'url' => ['/site/setup'], 'visible'=> !Yii::$app->user->isGuest],
+			['label' => 'About', 'url' => ['/site/about']],
 			Yii::$app->user->isGuest ?
 				['label' => 'Войти', 'url' => ['/site/login']] :
 				[

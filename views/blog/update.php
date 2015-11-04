@@ -5,8 +5,9 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Blog */
 
-$this->title = 'Редактирование записи: ' . ' ' . $model->title;
-$this->params['breadcrumbs'][] = ['label' => 'Blogs', 'url' => ['index']];
+$this->title = 'Редактирование: ' . ' ' . $model->title;
+$this->params['breadcrumbs'][] = ['label' => 'Блог', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => $model->category->name, 'url' => ['category/'.$model->id_category]];
 $this->params['breadcrumbs'][] = ['label' => $model->title, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Редактирование';
 ?>

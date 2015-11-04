@@ -13,18 +13,18 @@ use yii\web\AssetBundle;
  * @author Qiang Xue <qiang.xue@gmail.com>
  * @since 2.0
  */
-class AppAsset extends AssetBundle
+class BlogAsset extends AssetBundle
 {
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
-        'css/site.css',
+        'css/blog.css',
     ];
     public $js = [
-         'js/main.js'
+
     ];
     public $depends = [
-        'yii\web\YiiAsset',
-        'yii\bootstrap\BootstrapAsset',
+      //  'yii\web\YiiAsset',
+      //  'yii\bootstrap\BootstrapAsset',
     ];
 }

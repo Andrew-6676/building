@@ -6,12 +6,39 @@ use yii\helpers\ArrayHelper;
 use app\models\Users;
 use app\models\Categories;
 use yii\jui\DatePicker;
-use mihaildev\ckeditor\CKEditor;
+//use dosamigos\ckeditor\CKEditor;
+use iutbay\yii2kcfinder\KCFinder;
+use app\widgets\CKEditor;
+//use dosamigos\ckeditor\CKEditorInline;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Blog */
 /* @var $form yii\widgets\ActiveForm */
 
+
+
+// kcfinder options
+// http://kcfinder.sunhater.com/install#dynamic
+$kcfOptions = array_merge(KCFinder::$kcfDefaultOptions, [
+	'uploadURL' => Yii::getAlias('@web').'/upload',
+	'access' => [
+		'files' => [
+			'upload' => true,
+			'delete' => false,
+			'copy' => false,
+			'move' => false,
+			'rename' => false,
+		],
+		'dirs' => [
+			'create' => true,
+			'delete' => false,
+			'rename' => false,
+		],
+	],
+]);
+
+// Set kcfinder session options
+Yii::$app->session->set('KCFINDER', $kcfOptions);
 
 
 ?>
@@ -35,28 +62,29 @@ use mihaildev\ckeditor\CKEditor;
 
 	<?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
-	<?= $form->field($model, 'b_text')->widget(CKEditor::className(),[
-			'editorOptions' => [
-				'preset' => 'full', //разработанны стандартные настройки basic, standard, full данную возможность не обязательно использовать
-				'inline' => false, //по умолчанию false
-			],
-		]);
-	?>
-
 	<?= $form->field($model, 'id_category')->dropDownList(ArrayHelper::map(Categories::find()->all(), 'id', 'name', 'parent.name')) ?>
 
-	<?= $form->field($model, 'tags')->textInput(['maxlength' => true]) ?>
+	<?= $form->field($model, 'b_text')->widget(CKEditor::className(), [
+		'options' => ['rows' => 16],
+		'preset' => 'full'
+	]) ?>
 
+	<?= $form->field($model, 'tags')->textInput(['maxlength' => true]) ?>
+	<?php $model->published = true; ?>
 	<?= $form->field($model, 'published')->checkbox() ?>
 
 	<div class="form-group">
 		<?= Html::submitButton($model->isNewRecord ? 'Создать' : 'Сохранить', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
 	</div>
 
+
 	<?php ActiveForm::end(); ?>
 
 </div>
 
+<?php //CKEditorInline::begin(['preset' => 'basic']);?>
+<!--	This text can be edited now :)-->
+<?php //CKEditorInline::end();?>
 
 <?php
 
