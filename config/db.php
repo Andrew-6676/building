@@ -6,7 +6,7 @@ return [
 	'username' => '',
 	'password' => '',
 	'charset' => 'utf8',
-	'on afterOpen' => function ($event) {
-		$event->sender->createCommand("PRAGMA foreign_keys=ON;")->execute();
-	}
+//	'on afterOpen' => function ($event) {
+//		$event->sender->createCommand("PRAGMA foreign_keys=ON;")->execute();
+//	}
 ];

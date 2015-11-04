@@ -1,0 +1,6 @@
+{
+    "require": {
+        "yiisoft/yii2-jui": "^2.0",
+        "mihaildev/yii2-ckeditor": "*"
+    }
+}

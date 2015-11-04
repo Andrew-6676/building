@@ -27,7 +27,7 @@ AppAsset::register($this);
 <div class="wrap">
 	<?php
 	NavBar::begin([
-		'brandLabel' => 'Моё',
+		'brandLabel' => Yii::$app->params['myCompany'],
 		'brandUrl' => Yii::$app->homeUrl,
 		'options' => [
 			'class' => 'navbar-inverse navbar-fixed-top',
@@ -56,13 +56,13 @@ AppAsset::register($this);
 
 	<!-- ********************************************************************************************************* -->
 
-	<div class="container">
+	<div class="container" id="container">
 		<?= Breadcrumbs::widget([
 			'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
 		]) ?>
 
 		<?= $content ?>
-	</div>  <!-- end div.container -->
+	</div>  <!-- end div#container -->
 
 </div>  <!-- end diw.wrap -->
 
@@ -70,7 +70,7 @@ AppAsset::register($this);
 
 <footer class="footer">
 	<div class="container">
-		<p class="pull-left">&copy; My Company <?= date('Y') ?></p>
+		<p class="pull-left">&copy; <?= Yii::$app->params['myCompany']; ?> <?= date('Y') ?></p>
 
 		<p class="pull-right"><?= Yii::powered() ?></p>
 	</div>

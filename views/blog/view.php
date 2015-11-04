@@ -7,34 +7,41 @@ use yii\widgets\DetailView;
 /* @var $model app\models\Blog */
 
 $this->title = $model->title;
-$this->params['breadcrumbs'][] = ['label' => 'Blogs', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Блог', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => $model->category->name, 'url' => ['category/'.$model->id_category]];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="blog-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+	<h1><?= Html::encode($this->title) ?></h1>
 
-    <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
-                'method' => 'post',
-            ],
-        ]) ?>
-    </p>
 
-    <?= DetailView::widget([
+
+	<?php /*DetailView::widget([
         'model' => $model,
         'attributes' => [
             'id',
+            'b_date',
             'title',
             'b_text:ntext',
             'id_category',
             'published:boolean',
             'id_user',
         ],
-    ]) ?>
+    ]) */ ?>
+
+	<?= $model->b_text  ?>
+	<?= $model->b_date  ?>
+
+	<p>
+		<?= Html::a('Редактировать', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+		<?= Html::a('Удалить', ['delete', 'id' => $model->id], [
+			'class' => 'btn btn-danger',
+			'data' => [
+				'confirm' => 'Вы уверене что хотите удалить этот материал?',
+				'method' => 'post',
+			],
+		]) ?>
+	</p>
 
 </div>

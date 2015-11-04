@@ -8,6 +8,7 @@ use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 /**
  * BlogController implements the CRUD actions for Blog model.
@@ -23,21 +24,20 @@ class BlogController extends Controller
                     'delete' => ['post'],
                 ],
             ],
+	        'access' => [
+		        'class' => AccessControl::className(),
+		        'only' => ['create'],
+		        'rules' => [
+			        [
+				        'allow' => true,
+				        'actions' => ['create'],
+				        'roles' => ['@'],
+			        ],
+                ],
+	        ],
         ];
     }
-	public function actions()
-	{
-		return [
-		//	'index' => ['class'=>'app\controllers\blog\IndexAction'],
-			'error' => [
-				'class' => 'yii\web\ErrorAction',
-			],
-//			'captcha' => [
-//				'class' => 'yii\captcha\CaptchaAction',
-//				'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
-//			],
-		];
-	}
+
     /**
      * Lists all Blog models.
      * @return mixed
@@ -127,7 +127,7 @@ class BlogController extends Controller
         if (($model = Blog::findOne($id)) !== null) {
             return $model;
         } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
+            throw new NotFoundHttpException('такой страницы не существует.');
         }
     }
 }
