@@ -37,7 +37,7 @@ class Blog extends \yii\db\ActiveRecord
 			[['b_date'], 'safe'],
 			[['b_text'], 'string'],
 			[['id_category', 'id_user'], 'integer'],
-			[['published'], 'boolean'],
+			[['published', 'personal'], 'boolean'],
 			[['title', 'tags'], 'string', 'max' => 255],
 			['id_user', 'default', 'value' => Yii::$app->user->identity->id],
 		];
@@ -56,6 +56,7 @@ class Blog extends \yii\db\ActiveRecord
 			'tags' => 'Теги',
 			'id_category' => 'Категория',
 			'published' => 'Опубликовать',
+			'personal' => 'Личное',
 			'id_user' => 'Id User',
 		];
 	}

@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ListView;
+use app\components\Utils;
 
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -22,7 +23,18 @@ $this->params['breadcrumbs'][] = $this->title;
 		'dataProvider' => $dataProvider,
 		'itemOptions' => ['class' => 'item'],
 		'itemView' => function ($model, $key, $index, $widget) {
-			return Html::a(Html::encode($model->title), ['view', 'id' => $model->id]);
+			$user = '';
+			if ($model->user->id != Yii::$app->user->identity->id) {
+				$user = ' ('.$model->user->name.')';
+			}
+			$html = '';
+			$html .= Html::a(Html::encode($model->title), ['view', 'id' => $model->id]).$user;
+			$html .= $model->b_date;//Utils::format_date($model->b_date);
+			$html .= '';
+			$html .= '';
+			$html .= '<hr>';
+
+			return $html;
 		},
 	])
 	?>

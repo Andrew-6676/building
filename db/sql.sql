@@ -1,9 +1,14 @@
 create table  users (id integer primary key AUTOINCREMENT NOT NULL, name varchar(150), pass varchar(50), descr varchar(255));
 
-create table  purchases (id integer primary key AUTOINCREMENT NOT NULL, product varchar(255), quantity integer, price integer,  descr text, id_user integer,
+create table  purchases (id integer primary key AUTOINCREMENT NOT NULL, product varchar(255), quantity integer, price integer,  descr text, id_user integer, id_category integer default -1,
 CONSTRAINT fk_user_purchases
 FOREIGN KEY (id_user)
 REFERENCES users (id)
+ON DELETE CASCADE
+ON UPDATE CASCADE,
+CONSTRAINT fk_category_purchases
+FOREIGN KEY (id_category)
+REFERENCES categories (id)
 ON DELETE CASCADE
 ON UPDATE CASCADE
 );
@@ -33,7 +38,7 @@ REFERENCES users (id)
 ON DELETE CASCADE
 ON UPDATE CASCADE);
 
-create table  blog (id integer primary key AUTOINCREMENT NOT NULL, b_date date, title varchar(255), b_text text, tags varchar(255), id_category integer, published BOOLEAN, id_user integer,  
+create table  blog (id integer primary key AUTOINCREMENT NOT NULL, b_date date, title varchar(255), b_text text, tags varchar(255), id_category integer, published BOOLEAN, id_user integer, personal boolean default true,  
 CONSTRAINT fk_user_blog
 FOREIGN KEY (id_user)
 REFERENCES users (id)

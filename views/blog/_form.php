@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
-use app\models\Users;
+//use app\models\Users;
 use app\models\Categories;
 use yii\jui\DatePicker;
 //use dosamigos\ckeditor\CKEditor;
@@ -50,13 +50,13 @@ Yii::$app->session->set('KCFINDER', $kcfOptions);
 	<?= $form->field($model,'b_date')->widget(
 		DatePicker::className(),
 		['clientOptions' => [
-			'defaultDate' => date('y-m-d'),
-			'dateFormat' => 'd M, Y',
+			//'defaultDate' => date('yy-mm-dd'),
+			'dateFormat' => 'mm/dd/yy',
 			'buttonImage' => "/images/calendar.gif",
 			'showOn' => "button",
 			'showButtonPanel' => 'true',
-			'changeMonth' => 'true',
-            'changeYear' => 'true',
+			//'changeMonth' => 'true',
+            //'changeYear' => 'true',
 
 		]]) ?>
 
@@ -70,8 +70,15 @@ Yii::$app->session->set('KCFINDER', $kcfOptions);
 	]) ?>
 
 	<?= $form->field($model, 'tags')->textInput(['maxlength' => true]) ?>
-	<?php $model->published = true; ?>
-	<?= $form->field($model, 'published')->checkbox() ?>
+	<?php
+		//$model->published = true;
+		//$model->personal = true;
+	?>
+	<fieldset class="">
+		<legend>Настройки</legend>
+		<?= $form->field($model, 'personal')->checkbox() ?>
+		<?= $form->field($model, 'published')->checkbox() ?>
+	</fieldset>
 
 	<div class="form-group">
 		<?= Html::submitButton($model->isNewRecord ? 'Создать' : 'Сохранить', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

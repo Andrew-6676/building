@@ -25,8 +25,13 @@ $this->params['breadcrumbs'][] = $this->title;
 		],
 		'coreStyle' => 1
 	]) ?>
-
-	<h1><?= Html::encode($this->title) ?></h1>
+	<?php
+	$user = '';
+	if ($model->user->id != Yii::$app->user->identity->id) {
+		$user = ' ('.$model->user->name.')';
+	}
+	?>
+	<h1><?= Html::encode($this->title.$user) ?></h1>
 
 
 

@@ -39,6 +39,7 @@ AppAsset::register($this);
 		'items' => [
 			['label' => 'Главная', 'url' => ['/site/index']],
 			['label' => 'Блог', 'url' => ['/blog/index'],  'visible'=> !Yii::$app->user->isGuest],
+			['label' => 'Покупки', 'url' => ['/purchases/index'],  'visible'=> !Yii::$app->user->isGuest],
 			['label' => 'Настройки', 'url' => ['/site/setup'], 'visible'=> !Yii::$app->user->isGuest],
 			['label' => 'About', 'url' => ['/site/about']],
 			Yii::$app->user->isGuest ?
