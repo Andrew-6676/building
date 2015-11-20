@@ -6,6 +6,8 @@
         "2amigos/yii2-ckeditor-widget": "*",
         "iutbay/yii2-kcfinder": "*",
         "iutbay/yii2-fontawesome": "*",
-        "himiklab/yii2-colorbox-widget": "*"
+        "himiklab/yii2-colorbox-widget": "*",
+        "kartik-v/yii2-widgets": "*",
+        "kartik-v/yii2-field-range": "*"
     }
 }

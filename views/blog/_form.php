@@ -49,14 +49,15 @@ Yii::$app->session->set('KCFINDER', $kcfOptions);
 
 	<?= $form->field($model,'b_date')->widget(
 		DatePicker::className(),
-		['clientOptions' => [
-			//'defaultDate' => date('yy-mm-dd'),
-			'dateFormat' => 'mm/dd/yy',
+		['dateFormat' => 'php:Y-m-d',
+			'clientOptions' => [
+//			'defaultDate' => date('Y-m-d'),
+			'showOtherMonths' => 'true',
 			'buttonImage' => "/images/calendar.gif",
 			'showOn' => "button",
 			'showButtonPanel' => 'true',
-			//'changeMonth' => 'true',
-            //'changeYear' => 'true',
+			'changeMonth' => 'true',
+            'changeYear' => 'true',
 
 		]]) ?>
 
